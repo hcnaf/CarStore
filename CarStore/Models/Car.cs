@@ -7,7 +7,7 @@ namespace CarStore.Models
 {
     public class Car
     {
-        public int ProductId { get; set; }
+        public int CarId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }

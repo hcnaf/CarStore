@@ -20,8 +20,8 @@ namespace CarStore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CarsDbContext>(options => options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;DataBase=CarStore;Trusted_Connection=True;MultipleActiveReusltSets=true"));
-            services.AddTransient<ICarRepository, TestCarRepository>();
+            services.AddDbContext<CarsDbContext>(options => options.UseSqlServer(Configuration["Data:CarStore:ConnectionString"]));
+            services.AddTransient<ICarRepository, CarRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
@@ -47,6 +47,8 @@ namespace CarStore
                     name: "default",
                     template: "{controller=Car}/{action=List}/{id?}");
             });
+
+            CarsSeed.EnsurePopulated(app);
         }
     }
 }
