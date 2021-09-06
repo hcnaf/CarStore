@@ -7,6 +7,6 @@ namespace CarStore.Models
 {
     public interface ICarRepository
     {
-        IQueryable<Car> Products { get; }
+        IQueryable<Car> Cars { get; }
     }
 }

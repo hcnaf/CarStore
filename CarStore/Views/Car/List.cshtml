@@ -1,6 +1,6 @@
-﻿@model IEnumerable<CarStore.Models.Car>
+﻿@model CarListViewModel
 
-@foreach (var car in Model)
+@foreach (var car in Model.Cars)
 {
     <div>
         <h3>@car.Name</h3>
@@ -8,3 +8,5 @@
         <h4>@car.Price.ToString("c")</h4>
     </div>
 }
+
+<div page-model="@Model.Paging" page-action="List"></div>

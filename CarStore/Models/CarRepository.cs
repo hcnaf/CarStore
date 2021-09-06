@@ -14,6 +14,6 @@ namespace CarStore.Models
             this.context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public IQueryable<Car> Products => context.Cars;
+        public IQueryable<Car> Cars => context.Cars;
     }
 }

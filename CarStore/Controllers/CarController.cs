@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CarStore.Models;
+using CarStore.Models.ViewModels;
 
 namespace CarStore.Controllers
 {
@@ -15,6 +16,11 @@ namespace CarStore.Controllers
         private ICarRepository repository;
 
         /// <summary>
+        /// Maximum items on the page. Default = 5;
+        /// </summary>
+        public int PageSize = 5;
+
+        /// <summary>
         /// Car controller ctor.
         /// </summary>
         /// <param name="repository"></param>
@@ -23,6 +29,10 @@ namespace CarStore.Controllers
             this.repository = repository ?? throw new ArgumentNullException();
         }
 
-        public ViewResult List() => View(repository.Products);
+        public ViewResult List(int page = 1) => View(new CarListViewModel()
+        {
+            Cars = repository.Cars.OrderBy(car => car.CarId).Skip((page - 1) * PageSize).Take(PageSize),
+            Paging = new Paging() { CurrentPage = page, ItemsPerPage = PageSize, TotalItems = repository.Cars.Count()}
+        });
     }
 }

@@ -44,6 +44,10 @@ namespace CarStore
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "pagination",
+                    template: "Cars/Page{Page}",
+                    defaults: new { Controller = "Car", action = "List" });
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Car}/{action=List}/{id?}");
             });
