@@ -2,11 +2,20 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" asp-href-include="~/**/*.min.css" asp-href-exclude="~/**/*-reboot*,~/**/*-grid*" type="text/css"/>
     <title>CarStore</title>
 </head>
 <body>
-    <div>
-        @RenderBody()
+    <div class="navbar navbar-collapse bg-dark" role="navigation">
+        <a class="navbar-brand" href="#">CarStore</a>
+    </div> 
+    <div class="row m-1 p-1">
+        <div id="categories" class="col-3">
+            Put something useful here later
+        </div>
+        <div class="col-9">
+            @RenderBody()
+        </div>
     </div>
 </body>
 </html>

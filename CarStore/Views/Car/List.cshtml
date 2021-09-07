@@ -2,11 +2,10 @@
 
 @foreach (var car in Model.Cars)
 {
-    <div>
-        <h3>@car.Name</h3>
-        @car.Description
-        <h4>@car.Price.ToString("c")</h4>
-    </div>
+    @Html.Partial("CarSummary", car);
 }
 
-<div page-model="@Model.Paging" page-action="List"></div>
+<div page-model="@Model.Paging" page-action="List" page-classes-enabled="true"
+     page-class="btn" page-class-default="page-link btn-secondary"
+     page-class-selected="page-link active btn-primary" class="btn-group">
+</div>

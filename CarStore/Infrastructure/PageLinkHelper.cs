@@ -22,6 +22,11 @@ namespace CarStore.Infrastructure
         public ViewContext ViewContext { get; set; }
         public Paging PageModel { get; set; }
         public string PageAction { get; set; }
+        public bool PageClassesEnabled { get; set; }
+        public string PageClass { get; set; }
+        public string PageClassDefault { get; set; }
+        public string PageClassSelected { get; set; }
+
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             var urlHelper = urlHelperFactory.GetUrlHelper(ViewContext);
@@ -30,6 +35,10 @@ namespace CarStore.Infrastructure
             {
                 var tag = new TagBuilder("a");
                 tag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i });
+                if (this.PageClassesEnabled)
+                {
+                    tag.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassDefault);
+                }
                 tag.InnerHtml.Append(i.ToString());
                 result.InnerHtml.AppendHtml(tag);
             }
