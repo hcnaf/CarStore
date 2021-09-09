@@ -91,7 +91,7 @@ namespace CarStore.Tests
 
             var controller = new CarController(mock.Object);
 
-            var result = controller.List(2).ViewData.Model as CarListViewModel;
+            var result = controller.List(null, 2).ViewData.Model as CarListViewModel;
 
             var cars = result.Cars.ToArray();
 

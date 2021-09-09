@@ -29,10 +29,11 @@ namespace CarStore.Controllers
             this.repository = repository ?? throw new ArgumentNullException();
         }
 
-        public ViewResult List(int page = 1) => View(new CarListViewModel()
+        public ViewResult List(string category, int page = 1) => View(new CarListViewModel()
         {
-            Cars = repository.Cars.OrderBy(car => car.CarId).Skip((page - 1) * PageSize).Take(PageSize),
-            Paging = new Paging() { CurrentPage = page, ItemsPerPage = PageSize, TotalItems = repository.Cars.Count()}
+            Cars = repository.Cars.Where(car => category == null || car.Category == category).OrderBy(car => car.CarId).Skip((page - 1) * PageSize).Take(PageSize),
+            Paging = new Paging() { CurrentPage = page, ItemsPerPage = PageSize, TotalItems = category is null ? repository.Cars.Count() : repository.Cars.Where(car => car.Category == category).Count() },
+            CurrentCategory = category
         });
     }
 }

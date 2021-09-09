@@ -7,5 +7,6 @@ namespace CarStore.Models.ViewModels
     {
         public IEnumerable<Car> Cars { get; set; }
         public Paging Paging { get; set; }
+        public string CurrentCategory { get; set; }
     }
 }

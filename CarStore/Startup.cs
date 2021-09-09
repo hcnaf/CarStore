@@ -23,6 +23,8 @@ namespace CarStore
             services.AddDbContext<CarsDbContext>(options => options.UseSqlServer(Configuration["Data:CarStore:ConnectionString"]));
             services.AddTransient<ICarRepository, CarRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,15 +43,34 @@ namespace CarStore
 
             app.UseStaticFiles();
 
+            app.UseSession();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "pagination",
-                    template: "Cars/Page{Page}",
-                    defaults: new { Controller = "Car", action = "List" });
+                    name: null,
+                    template: "{category}/Page{Page:int}",
+                    defaults: new {controller = "Car", action = "List"}
+                    );
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Car}/{action=List}/{id?}");
+                    name: null,
+                    template: "Page{Page:int}",
+                    defaults: new { controller = "Car", action = "List", Page = 1 }
+                    );
+                routes.MapRoute(
+                    name: null,
+                    template: "{category}",
+                    defaults: new { controller = "Car", action = "List", Page = 1 }
+                    );
+                routes.MapRoute(
+                    name: null,
+                    template: "",
+                    defaults: new { controller = "Car", action = "List", Page = 1 }
+                    );
+                routes.MapRoute(
+                     name: null,
+                     template: "{controller}/{action}/{id?}"
+                     );
             });
 
             CarsSeed.EnsurePopulated(app);

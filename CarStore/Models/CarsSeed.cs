@@ -17,56 +17,56 @@ namespace CarStore.Models
                     { 
                         Name = "Porsche Cayman",
                         Category = "Coupe",
-                        Price = 71999.9m,
+                        Price = 71.9m,
                         Description = "Perfect is his second name."
                     },
                     new Car()
                     {
                         Name = "Audi TT",
                         Category = "Coupe",
-                        Price = 32200m,
+                        Price = 32m,
                         Description = "Coupe for your every day life"
                     },
                     new Car()
                     {
                         Name = "Volkswagen Passat CC",
                         Category = "Sedan",
-                        Price = 26700m,
+                        Price = 26m,
                         Description = "Stylish sedan, that will never get old."
                     },
                     new Car()
                     {
                         Name = "Tesla Model 3",
                         Category = "Sedan",
-                        Price = 43000m,
+                        Price = 43m,
                         Description = "Electrocar with a long range battarey."
                     },
                     new Car()
                     {
                         Name = "Audi A6",
                         Category = "Sedan",
-                        Price = 29700m,
+                        Price = 29m,
                         Description = "Stylish family sedan."
                     },
                     new Car()
                     {
                         Name = "Jeep Grand Cherokee WK2",
                         Category = "Crossover",
-                        Price = 23000m,
+                        Price = 23m,
                         Description = "Excelent crossover."
                     },
                     new Car()
                     {
                         Name = "BMW X6",
                         Category = "Crossover",
-                        Price = 59200m,
+                        Price = 59.2m,
                         Description = "Sport crossover."
                     },
                     new Car()
                     {
                         Name = "Jaguar XF X260",
                         Category = "Sedan",
-                        Price = 31750m,
+                        Price = 31.750m,
                         Description = "Luxry english sedan."
                     }
                     );
