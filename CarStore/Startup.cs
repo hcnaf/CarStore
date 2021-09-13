@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CarStore.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace CarStore
 {
@@ -22,6 +23,8 @@ namespace CarStore
         {
             services.AddDbContext<CarsDbContext>(options => options.UseSqlServer(Configuration["Data:CarStore:ConnectionString"]));
             services.AddTransient<ICarRepository, CarRepository>();
+            services.AddScoped(s => SessionCart.GetCart(s));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddMemoryCache();
             services.AddSession();

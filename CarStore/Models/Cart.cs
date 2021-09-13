@@ -30,7 +30,7 @@ namespace CarStore.Models
             }
         }
 
-        public virtual void RemoveLine(Car car) => lines.RemoveAll(line => line.Car == car);
+        public virtual void RemoveLine(Car car) => lines.RemoveAll(line => line.Car.CarId == car.CarId);
 
         public virtual decimal Total => lines.Sum(line => line.Car.Price * line.Count);
 
