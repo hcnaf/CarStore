@@ -1,0 +1,17 @@
+﻿@using System.Globalization; 
+@model Cart
+<div class="">
+    @if (Model.CartLines.Count() > 0)
+    {
+        <small class="navbar-text">
+            <font color="white">
+                <b>Your Cart:</b>
+                @Model.CartLines.Sum(line => line.Count) item(s)
+                @(Model.Total.ToString("c", new CultureInfo("de-DE")));
+            </font>
+        </small>
+    }
+    <a class="btn btn-sm btn-secondary" asp-controller="Cart" asp-action="Index" asp-route-url="@ViewContext.HttpContext.Request.PathAndQuery()">
+        <i class="fas fa-shopping-cart"></i>
+    </a>
+</div>

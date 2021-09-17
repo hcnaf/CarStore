@@ -2,16 +2,20 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" asp-href-include="~/**/*.min.css" asp-href-exclude="~/**/*-reboot*,~/**/*-grid*" type="text/css"/>
+    <link rel="stylesheet" asp-href-include="~/**/bootstrap/*/*.min.css" asp-href-exclude="~/**/bootstrap/*/*-reboot*,~/**/*-grid*" type="text/css"/>
+    <link rel="stylesheet" asp-href-include="~/**/fontawesome/css/*.css" />
     <title>CarStore</title>
 </head>
 <body>
-    <div class="navbar navbar-collapse bg-dark" role="navigation">
-        <a class="navbar-brand" href="#">CarStore</a>
+    <div class="navbar navbar-dark bg-dark" role="navigation">
+            <a class="col-auto navbar-brand" href="#" style="color:lawngreen">CarStore</a>
+            <div class="col-auto" style="float:right">
+                @await Component.InvokeAsync("CartSummary")
+            </div>
     </div> 
     <div class="row m-1 p-1">
         <div id="categories" class="col-3">
-            @await Component.InvokeAsync("NavigationMenu") 
+            @await Component.InvokeAsync("NavigationMenu")
         </div>
         <div class="col-9">
             @RenderBody()
