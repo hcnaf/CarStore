@@ -1,0 +1,32 @@
+﻿@model Order
+
+<h2>Check Out</h2>
+<p>Please enter your details.</p>
+
+<form asp-action="Checkout" method="post">
+    <h3>Ship to</h3>
+    <div class="form-text">
+        <label>Name:</label><input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-text">
+        <label>Country:</label><input asp-for="Country" class="form-control" />
+    </div>
+    <div class="form-text">
+        <label>City:</label><input asp-for="City" class="form-control" />
+    </div>
+    <div class="form-text">
+        <label>Address:</label><input asp-for="Address" class="form-control" />
+    </div>
+    <div class="form-text">
+        <label>Postcode:</label><input asp-for="PostCode" class="form-control" />
+    </div>
+    <h3>Options</h3>
+    <div class="form-check">
+        <label>
+            <input asp-for="GiftWrap" /> Gift wrap this toys.
+        </label>
+    </div>
+    <div class="text-center">
+        <input class="btn-primary" type="submit" value="Complete Order" />
+    </div>
+</form>
