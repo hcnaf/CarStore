@@ -25,6 +25,7 @@ namespace CarStore
             services.AddTransient<ICarRepository, CarRepository>();
             services.AddScoped(s => SessionCart.GetCart(s));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddMemoryCache();
             services.AddSession();
