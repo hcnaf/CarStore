@@ -8,5 +8,9 @@ namespace CarStore.Models
     public interface ICarRepository
     {
         IQueryable<Car> Cars { get; }
+
+        void Save(Car car);
+
+        void Delete(int carId);
     }
 }

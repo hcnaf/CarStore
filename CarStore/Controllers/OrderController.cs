@@ -14,6 +14,22 @@ namespace CarStore.Controllers
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
             this.cart = cart ?? throw new ArgumentNullException(nameof(cart));
         }
+
+        public ViewResult List() => View(repository.Orders.Where(order => !order.Shipped));
+
+        [HttpPost]
+        public IActionResult MarkShipped(int orderId)
+        {
+            var order = repository.Orders.FirstOrDefault(order => order.OrderId == orderId);
+            if (order != null)
+            {
+                order.Shipped = true;
+                repository.SaveOrder(order);
+            }
+
+            return RedirectToAction(nameof(this.List));
+        }
+
         public ViewResult Checkout() => View(new Order());
 
         [HttpPost]

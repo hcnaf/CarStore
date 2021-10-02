@@ -10,6 +10,9 @@ namespace CarStore.Models
         public int OrderId { get; set; }
 
         [BindNever]
+        public bool Shipped { get; set; }
+
+        [BindNever]
         public ICollection<CartLine> Lines { get; set; }
 
         [Required(ErrorMessage = "Please enter your name.")]
