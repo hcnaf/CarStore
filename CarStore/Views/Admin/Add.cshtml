@@ -1,14 +1,12 @@
 ﻿@model Car
 
 @{ 
-    ViewBag.Title = "Edit";
-    Layout = "_AdminLayout";
+    ViewBag.Title = "Add";
 }
 
-<h1>Edit @Model.Name</h1>
+<h1>Add a new Car</h1>
 
-<form asp-action="Edit" method="post">
-    <input type="hidden" asp-for="CarId" />
+<form asp-action="Add" method="post">
     <div class="form-text">
         <label asp-for="Name"></label>
         <div><span asp-validation-for="Name" class="text-danger"></span></div>
@@ -30,7 +28,7 @@
         <input asp-for="Price" class="form-control" />
     </div>
     <div class="text-center">
-        <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-primary" type="submit">Add</button>
         <a asp-action="Index" class="btn btn-secondary">Cancel</a>
     </div>
 </form>

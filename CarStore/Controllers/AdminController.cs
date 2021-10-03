@@ -19,6 +19,22 @@ namespace CarStore.Controllers
         public ViewResult Index() => View(repository.Cars);
 
         [HttpGet]
+        public ViewResult Add() => View();
+
+        [HttpPost]
+        public IActionResult Add(Car car)
+        {
+            if (ModelState.IsValid)
+            {
+                this.repository.Save(car);
+                TempData["message"] = $"{car.Name} has been saved.";
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
+
+        [HttpGet]
         public ViewResult Edit(int carId) => View(repository.Cars.FirstOrDefault(car => car.CarId == carId));
 
         [HttpPost]

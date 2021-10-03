@@ -3,7 +3,6 @@ using System;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using System.Text;
-using CarStore.Infrastructure;
 
 namespace CarStore.Models
 {

@@ -3,6 +3,11 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" asp-href-include="~/**/bootstrap/*/*.min.css" asp-href-exclude="~/**/bootstrap/*/*-reboot*,~/**/*-grid*" type="text/css" />
+    <title>@ViewBag.Title</title>
+    <style>
+        .input-validation-error {border-color: red; background-color: #fee; }
+    </style>
+    <script src="/jQuery/jQuery.js"></script>
 </head>
 <body class="m-1 p-1">
     <div class="bg-info p-2"><h4>@ViewBag.Title</h4></div>

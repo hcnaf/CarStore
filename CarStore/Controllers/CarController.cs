@@ -26,7 +26,7 @@ namespace CarStore.Controllers
         /// <param name="repository"></param>
         public CarController(ICarRepository repository)
         {
-            this.repository = repository ?? throw new ArgumentNullException();
+            this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
         public ViewResult List(string category, int page = 1) => View(new CarListViewModel()
