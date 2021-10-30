@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using CarStore.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace CarStore
 {
@@ -22,6 +23,10 @@ namespace CarStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<CarsDbContext>(options => options.UseSqlServer(Configuration["Data:CarStore:ConnectionString"]));
+            services.AddDbContext<CarStoreUserIdentityDbContext>(options => options.UseSqlServer(Configuration["Data:CarStoreUserIdentity:ConnectionString"]));
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<CarStoreUserIdentityDbContext>()
+                .AddDefaultTokenProviders();
             services.AddTransient<ICarRepository, CarRepository>();
             services.AddScoped(s => SessionCart.GetCart(s));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -78,6 +83,7 @@ namespace CarStore
             });
 
             CarsSeed.EnsurePopulated(app);
+            UserIdentitySeedData.EnsurePopulated(app);
         }
     }
 }

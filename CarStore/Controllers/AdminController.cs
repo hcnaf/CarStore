@@ -56,7 +56,7 @@ namespace CarStore.Controllers
             if (ModelState.IsValid)
             {
                 this.repository.Delete(carId);
-                TempData["message"] = $"Car number {carId} has deleted.";
+                TempData["message"] = $"Car number {carId} has been deleted.";
             }
 
             return RedirectToAction("Index");
