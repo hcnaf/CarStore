@@ -54,6 +54,8 @@ namespace CarStore
 
             app.UseSession();
 
+            app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
