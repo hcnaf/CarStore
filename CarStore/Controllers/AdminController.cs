@@ -1,4 +1,5 @@
 ﻿using CarStore.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace CarStore.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         ICarRepository repository;
@@ -56,7 +58,7 @@ namespace CarStore.Controllers
             if (ModelState.IsValid)
             {
                 this.repository.Delete(carId);
-                TempData["message"] = $"Car number {carId} has deleted.";
+                TempData["message"] = $"Car number {carId} has been deleted.";
             }
 
             return RedirectToAction("Index");

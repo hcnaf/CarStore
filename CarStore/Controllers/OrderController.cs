@@ -2,6 +2,7 @@
 using CarStore.Models;
 using System;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarStore.Controllers
 {
@@ -15,8 +16,10 @@ namespace CarStore.Controllers
             this.cart = cart ?? throw new ArgumentNullException(nameof(cart));
         }
 
+        [Authorize]
         public ViewResult List() => View(repository.Orders.Where(order => !order.Shipped));
 
+        [Authorize]
         [HttpPost]
         public IActionResult MarkShipped(int orderId)
         {
