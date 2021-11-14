@@ -24,5 +24,7 @@ namespace CarStore.Models
 
         [Required(ErrorMessage = "Please, enter car category.")]
         public string Category { get; set; }
+
+        public string ImageURL { get; set; }
     }
 }

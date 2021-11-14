@@ -32,6 +32,7 @@ namespace CarStore.Models
                 carToSave.Category = car.Category;
                 carToSave.Description = car.Description;
                 carToSave.Price = car.Price;
+                carToSave.ImageURL = car.ImageURL;
                 this.context.SaveChanges();
             }
         }

@@ -8,6 +8,14 @@
                 <small>@Model.Price.ToString("c", new System.Globalization.CultureInfo("de-DE"))</small>
             </span>
         </h4>
+        @if (@Model.ImageURL is null)
+        {
+            <img src="img/no_photo.png" height="300" />
+        }
+        else
+        {
+            <img src="@Model.ImageURL" height="300" />
+        }
     </div>
     <form id="@Model.CarId" asp-action="AddToCart" asp-controller="Cart" method="post">
         <input type="hidden" asp-for="CarId" />
