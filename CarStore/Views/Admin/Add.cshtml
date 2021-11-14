@@ -27,6 +27,11 @@
         <div><span asp-validation-for="Price" class="text-danger"></span></div>
         <input asp-for="Price" class="form-control" />
     </div>
+    <div class="form-text">
+        <label asp-for="ImageURL"></label>
+        <div><span asp-validation-for="ImageURL" class="text-danger"></span></div>
+        <input asp-for="ImageURL" class="form-control" />
+    </div>
     <div class="text-center">
         <button class="btn btn-primary" type="submit">Add</button>
         <a asp-action="Index" class="btn btn-secondary">Cancel</a>
