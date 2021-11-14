@@ -31,8 +31,14 @@ namespace CarStore.Controllers
 
         public ViewResult List(string category, int page = 1) => View(new CarListViewModel()
         {
-            Cars = repository.Cars.Where(car => category == null || car.Category == category).OrderBy(car => car.CarId).Skip((page - 1) * PageSize).Take(PageSize),
+            Cars = repository.Cars
+            .Where(car => !car.IsDeleted)
+            .Where(car => category == null || car.Category == category)
+            .OrderBy(car => car.CarId).Skip((page - 1) * PageSize)
+            .Take(PageSize),
+
             Paging = new Paging() { CurrentPage = page, ItemsPerPage = PageSize, TotalItems = category is null ? repository.Cars.Count() : repository.Cars.Where(car => car.Category == category).Count() },
+            
             CurrentCategory = category
         });
     }

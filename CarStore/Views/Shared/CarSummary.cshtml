@@ -8,7 +8,7 @@
                 <small>@Model.Price.ToString("c", new System.Globalization.CultureInfo("de-DE"))</small>
             </span>
         </h4>
-        @if (@Model.ImageURL is null)
+        @if (string.IsNullOrEmpty(@Model.ImageURL))
         {
             <img src="img/no_photo.png" height="300" />
         }

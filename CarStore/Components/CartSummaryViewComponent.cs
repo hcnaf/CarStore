@@ -7,14 +7,9 @@ namespace CarStore.Components
     public class CartSummaryViewComponent : ViewComponent
     {
         private Cart cart;
-        public CartSummaryViewComponent(Cart cart)
-        {
+        public CartSummaryViewComponent(Cart cart) =>
             this.cart = cart ?? throw new ArgumentNullException(nameof(cart));
-        }
 
-        public IViewComponentResult Invoke()
-        {
-            return View(this.cart);
-        }
+        public IViewComponentResult Invoke() => View(this.cart);
     }
 }
