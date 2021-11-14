@@ -22,10 +22,7 @@ namespace CarStore.Controllers
         }
 
         [AllowAnonymous]
-        public ViewResult Login(string returnUrl)
-        {
-            return View(new LoginViewModel { ReturnUrl = returnUrl });
-        }
+        public ViewResult Login(string returnUrl) => View(new LoginViewModel { ReturnUrl = returnUrl });
 
         [HttpPost]
         [AllowAnonymous]
@@ -55,9 +52,6 @@ namespace CarStore.Controllers
             return Redirect(returnUrl);
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
     }
 }

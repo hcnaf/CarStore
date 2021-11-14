@@ -18,7 +18,7 @@ namespace CarStore.Controllers
             this.repository = repository;
         }
 
-        public ViewResult Index() => View(repository.Cars);
+        public ViewResult Index() => View(repository.Cars.Where(car => !car.IsDeleted));
 
         [HttpGet]
         public ViewResult Add() => View();

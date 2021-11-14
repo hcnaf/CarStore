@@ -26,5 +26,7 @@ namespace CarStore.Models
         public string Category { get; set; }
 
         public string ImageURL { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

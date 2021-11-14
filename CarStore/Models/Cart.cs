@@ -11,9 +11,7 @@ namespace CarStore.Models
         public virtual void AddItem(Car car, int count)
         {
             if (count < 1)
-            {
                 return;
-            }
 
             var line = this.lines.Where(line => line.Car.CarId == car.CarId).FirstOrDefault();
             if (line is null)
@@ -25,9 +23,7 @@ namespace CarStore.Models
                 });
             }
             else
-            {
                 line.Count += count;
-            }
         }
 
         public virtual void RemoveLine(Car car) => lines.RemoveAll(line => line.Car.CarId == car.CarId);

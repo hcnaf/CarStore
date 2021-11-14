@@ -42,7 +42,7 @@ namespace CarStore.Models
             var carToDelete = this.context.Cars.FirstOrDefault(c => c.CarId == carId);
             if (carToDelete != null)
             {
-                this.context.Cars.Remove(carToDelete);
+                carToDelete.IsDeleted = true;
                 this.context.SaveChanges();
             }
         }

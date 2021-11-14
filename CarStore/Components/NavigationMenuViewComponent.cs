@@ -17,7 +17,11 @@ namespace CarStore.Components
         public IViewComponentResult Invoke()
         {
             ViewBag.SelectedCategory = RouteData?.Values["category"];
-            return View(this.carRepository.Cars.Select(car => car.Category).Distinct().OrderBy(category => category));
+            return View(this.carRepository.Cars
+                .Where(car => !car.IsDeleted)
+                .Select(car => car.Category)
+                .Distinct()
+                .OrderBy(category => category));
         }
     }
 }
